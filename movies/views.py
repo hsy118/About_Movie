@@ -10,9 +10,9 @@ from .serializers import PopularSerializer
 # Create your views here.
 
 # def movie_list(request):
-#     return render(request, 'movies/main.html')
+#     return render(request, 'movies/temp.html')
 
-@api_view(['GET'])
+
 def popular_movies(request):
     """
     이미지, 제목, 레이팅을 인기있는 순서대로 보내주는 API
@@ -24,6 +24,7 @@ def popular_movies(request):
     }
     # return Response(serializer.data)
     return render(request, 'movies/main.html', context)
+
 
 def recommend(request):
     """ 추천영화로 랜더링하는 함수"""
@@ -84,15 +85,32 @@ def show_movies(request, genre):
         for com in movie_genre:
             if com == genre:   
                 genre_movies.append(movie)
-                # temp= {}
-                # temp['title'] = movie.title
-                # temp['imgUrl'] = movie.img_url
-                # temp['rate'] = movie.rate
-                # temp['story'] = movie.story
-                # temp['genre'] = movie.genre
-                # context[cnt] = temp
-                # cnt += 1
     context = {
         'movies' : genre_movies 
     }
     return render(request, 'movies/moviesByGenre.html', context)
+
+
+@api_view(['GET'])
+def get_api(request, pk):
+    movies = Movies.objects.get(pk=pk)
+    serializer = PopularSerializer(movies)
+    return Response(serializer.data)
+
+
+def abab(request):
+    """
+    이미지, 제목, 레이팅을 인기있는 순서대로 보내주는 API
+    """
+    # movies = Movies.objects.order_by('-people')
+    # serializer = PopularSerializer(movies, many=True)
+    print('testtestetsetsetst')
+    context = {
+        'movies' : movies,
+    }
+    # return Response(serializer.data)
+    return render(request, 'movies/abab.html', context)
+
+def wow(request):
+    print('wow')
+    return render(request, 'movies/wow.html')

@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    {% comment %} 카드를 클릭하면 모달 창으로 영화 정보가 나오는 기능 구현 해야합니다. {% endcomment %}
     <div class="text-center  d-flex flex-wrap justify-content-around">
       {% for movie in movies %}
-      <div class="card mt-4" style="width: 11rem;">
+      <div class="card mt-4" style="width: 11rem; height: 23rem;">
           <img src="{{movie.img_url}}" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">{{movie.title}}</h5>
