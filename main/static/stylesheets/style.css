@@ -49,9 +49,10 @@ h1 {
   position: fixed;
   padding: 11px 150px;
   width: 100%;
-  border: 2px solid black;
+  
   top: 0px;
   z-index: 1;
+  background-color: #68696c;
 }
 .my-container {
   margin-top: 150px;
