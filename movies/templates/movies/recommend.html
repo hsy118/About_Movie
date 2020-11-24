@@ -40,7 +40,7 @@
     <h1 style="display:block;">선택하신 항목과 가장 일치합니다</h1>
     <div class="text-center d-flex flex-wrap justify-content-around">
       <div v-for="(movie, idx) in bestMovie">
-        <button type="button" data-toggle="modal" data-target="#movie-{{movie.movieId}}">
+        <button type="button" data-toggle="modal" :data-target="`#movie-${movie.movieId}`">
           <div class="card mt-4" style="width: 11rem; height: 23rem;">
             <img :src="movie.movieImgUrl" class="card-img-top" alt="...">
             <div class="card-body">
@@ -56,7 +56,7 @@
         {% comment %} 뷰 {{}}  이거는 ({}) 이걸로 바꼈습니다.{% endcomment %}
         {% comment %} 장고는 그대로 {{}}  이걸로 db사용하실 수있는데, 애초에 v-for로 돌아서 필요없을듯요{% endcomment %}
         {% comment %} 사랑합니다. 동네에서 걸어서 15분 거리에 잇는 식당 갔다가 얼른 올게요 {% endcomment %}
-        <div class="modal fade" :id="`movie-$({movie.movieId})`" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" :id="`movie-${movie.movieId}`" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
