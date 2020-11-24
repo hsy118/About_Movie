@@ -35,7 +35,7 @@
     >장르별 추천 받기!</button>
   </div>
 
-  <div>
+  <div :class="{'start' : isStart}">
     <h1 style="display:block;">선택하신 항목과 가장 일치합니다</h1>
     <div class="text-center d-flex flex-wrap justify-content-around">
       <div v-for="(movie, idx) in bestMovie">
@@ -97,6 +97,7 @@
         firstMovie: [],
         secondMovie: [],
         isFinish: false,
+        isStart: true,
       },
       methods: {
         getRecommendation: function () {
@@ -127,6 +128,7 @@
               }
               // console.log(this.firstMovie)
               this.isFinish = true
+              this.isStart = false
 
             })
             .catch(err => {console.log(err)})
