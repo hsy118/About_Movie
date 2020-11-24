@@ -5,10 +5,9 @@ from. import views
 app_name = "movies"
 
 urlpatterns = [
-    path('', views.popular_movies, name='main'),
+    path('', views.start, name='start'),
+    path('popular/', views.popular_movies, name='popular'),
     path('recommend/', views.recommend, name='recommend'),
     path('recommendation/<str:genre1>/<str:genre2>/', views.recommendation, name='recommendation'),
-    path('<str:genre>/', views.show_movies, name='show_movies'),
-
-    path('wow/', views.wow),
+    path('show/<str:genre>/', views.show_movies, name='show_movies'),
 ]

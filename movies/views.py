@@ -12,6 +12,9 @@ from .serializers import PopularSerializer
 # def movie_list(request):
 #     return render(request, 'movies/temp.html')
 
+def start(request):
+    return render(request, 'movies/start.html')
+
 
 def popular_movies(request):
     """
