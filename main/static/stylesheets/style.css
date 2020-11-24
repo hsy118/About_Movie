@@ -1,7 +1,19 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url(../img/film.jpg);
+  height: 100vh;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+}
 h1 {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
+      text-align: center;
+      margin-bottom: 2rem;
+    }
 
   .button_margin {
     margin-left: 0.5rem;
@@ -38,8 +50,7 @@ h1 {
   padding: 11px 150px;
   width: 100%;
   border: 2px solid black;
-  background-color: yellow;
-  top: 10px;
+  top: 0px;
   z-index: 1;
 }
 .my-container {
