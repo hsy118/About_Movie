@@ -44,6 +44,7 @@ def recommendation(request, genre1, genre2):
         for movie_genre in movie_genres:
             if movie_genre == genre1:
                 temp = {}
+                temp['movieId'] = movie.id
                 temp['movieTitle'] = movie.title
                 temp['movieImgUrl'] = movie.img_url
                 temp['movieRate'] = movie.rate
@@ -52,6 +53,7 @@ def recommendation(request, genre1, genre2):
                 first_movie.append(temp)
             if movie_genre == genre2:
                 temp = {}
+                temp['movieId'] = movie.id
                 temp['movieTitle'] = movie.title
                 temp['movieImgUrl'] = movie.img_url
                 temp['movieRate'] = movie.rate

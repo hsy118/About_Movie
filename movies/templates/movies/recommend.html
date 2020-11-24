@@ -36,14 +36,34 @@
   </div>
 
   <div :class="{'start' : isStart}">
+
     <h1 style="display:block;">선택하신 항목과 가장 일치합니다</h1>
     <div class="text-center d-flex flex-wrap justify-content-around">
       <div v-for="(movie, idx) in bestMovie">
-        <div class="card mt-4" style="width: 11rem; height: 23rem;">
-          <img :src="movie.movieImgUrl" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">({movie.movieTitle})</h5>
-            <p class="card-text">({movie.movieRate})</p>
+        <button type="button" data-toggle="modal" data-target="#movie-{{movie.movieId}}">
+          <div class="card mt-4" style="width: 11rem; height: 23rem;">
+            <img :src="movie.movieImgUrl" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">({movie.movieTitle})</h5>
+              <p class="card-text">({movie.movieRate})</p>
+            </div>
+          </div>
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" :id="`movie-$({movie.movieId})`" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">({movie.movieTitle})</h5>
+              </div>
+              <div class="modal-body">
+                <p>({movie.movieStory})</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -126,10 +146,8 @@
                   this.secondMovie.push(res.data['secondMovie'][i])
                 }
               }
-              // console.log(this.firstMovie)
               this.isFinish = true
               this.isStart = false
-
             })
             .catch(err => {console.log(err)})
         }

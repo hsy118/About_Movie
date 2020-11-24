@@ -2,9 +2,9 @@
 {% block content %}
   <div class="text-center  d-flex flex-wrap justify-content-around">
     {% for movie in movies %}
-      <button class="mt-4" type="button" data-toggle="modal"
+      <button onclick="clickModal(id)" id="button-{{movie.id}}" class="mt-4" type="button" data-toggle="modal"
       data-target="#movie-{{movie.id}}">
-      <div class="card " style="width: 11rem; height:23rem;">
+      <div class="card" style="width: 11rem; height:23rem;">
           <img src="{{movie.img_url}}" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title text-primary">{{movie.title}}</h5>
@@ -13,24 +13,63 @@
       </div>
       </button>
 
-      <div class="modal fade" id="movie-{{movie.id}}" tabindex="-1"  role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+      <div class="modal fade" id="movie-{{movie.id}}" data-backdrop="static" data-keyboard="false" tabindex="-1"  role="dialog" aria-labelledby="modal-default" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">{{movie.title}}</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <h5 id="title-{{movie.id}}"class="modal-title">{{movie.title}}</h5>
+              <div class="video-container">
+                <iframe src="" id="frame-{{movie.id}}" class="video" frameborder="0"></iframe>
+              </div>
             </div>
             <div class="modal-body">
               {{movie.story}}
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeClick()">Close</button>
+              <button onclick="clickClose(id)" id="close-{{movie.id}}" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
       </div>
     {% endfor %}
   </div>
+
+  <script>
+    const YOUTUBE_API_URL = "https://www.googleapis.com/youtube/v3/search"
+    const YOUTUBE_API_KEY = "AIzaSyBBt_xBVb114robyfWjaXiuB9fWN2D1GqM"
+
+    const nowPlyaing = false
+    const movieTitle = document.getElementsByClassName('modal-title')
+
+    function clickModal(id) {
+      // iframe 선택하기
+      const newName = id.split('-')
+      const idNumber = newName[1]
+      const myFrame = `frame-${idNumber}`
+      const selectFrame = document.getElementById(myFrame)
+      // 검색할떄 넣을 영화 제목 만들기
+      const movieTitleName = `title-${idNumber}`
+      const movieTitle = document.getElementById(movieTitleName).innerText
+      const searchMovie = `${movieTitle} 예고편`
+
+      // selectFrame에 src에 우리가 원하는 값 넣을거에요
+      axios.get(YOUTUBE_API_URL, {params: {key: YOUTUBE_API_KEY,
+      part: 'snippet', type:'video', q:searchMovie}})
+      .then(res => {
+        this.nowPlyaing = true
+        const myVideoId = res.data.items[0].id.videoId
+        selectFrame.setAttribute('src', `https://www.youtube.com/embed/${myVideoId}`)
+      })
+      .catch(err => {console.log(err)})
+    }
+    function clickClose(id) {
+      this.nowPlyaing = false
+      console.log(id)
+      const newNowPlaying = id.split('-')
+      const newIdNum = newNowPlaying[1]
+      const NewMyFrame = `frame-${newIdNum}`
+      const getIframe = document.getElementById(NewMyFrame)
+      getIframe.setAttribute('src', '')
+    }
+  </script>
 {% endblock content %}
