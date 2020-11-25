@@ -172,6 +172,20 @@ h1 {
   font-size: 25px;
   margin-top: 10px;
 }
+.modal-footer > button {
+
+}
+
+.modal-footer > input {
+  font-size: 20px;
+  border: none;
+  border-radius: 3px;
+  background: #63767d;
+  margin-left: 10px;
+  color: whitesmoke;
+  padding: 5px;
+
+}
 /* .video {
   display: block;
   text-align: center;
