@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form action="">
+    <form class="update-accounts" action="">
     {% csrf_token %}
     {{form.as_p}}
     <div style="padding-bottom: 30px;">

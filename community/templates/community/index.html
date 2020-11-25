@@ -3,8 +3,8 @@
 {% block content %}
   <h1 class="writer-button">영화 후기 게시판</h1>
   <div class="text-center">
-    <a class="write" href="{% url 'community:create' %}">
-      <i class="fas fa-edit" style="color:black"><span class="writer">  리뷰 작성하기</span></i>
+    <a class="write " href="{% url 'community:create' %}">
+      <i class="fas fa-edit ivory-color"><span class="writer ivory-color">  리뷰 작성하기</span></i>
     </a>  
   </div>
   {% if user.is_authenticated %}
@@ -18,14 +18,14 @@
       <div 
       class="board-header list-group-item list-group-item-action d-flex
       justify-content-around">
-        <p>글 제목: {{ review.title }}<p/>
+        <p class="community-list">글 제목: {{ review.title }}<p/>
         <p><span>작성자 :{{ review.user }}</span></p>
       </div>
       </a>
     </div>
     <div class="board-footer d-flex justify-content-around">
-      <p>{{review.updated_at}}</p>
-      <div>
+      <p class="color-white">{{review.updated_at}}</p>
+      <div   class="color-white" >
         <form data-review-id="{{ review.pk }}" class="d-inline like-form">
           {% csrf_token %}
           {% if user in review.like_users.all %}

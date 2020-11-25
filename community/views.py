@@ -71,8 +71,6 @@ def update(request, review_pk):
     return render(request, 'community/update.html', context)
 
 
-
-
 @require_POST
 def create_comment(request, review_pk):
     review = get_object_or_404(Review, pk=review_pk)
