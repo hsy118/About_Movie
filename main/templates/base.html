@@ -58,7 +58,7 @@
         </div>
     </div>
     </ul> 
-      <div>
+      <div class= 'accounts-tab'>
         {% if request.user.is_authenticated %}
         <a href="{% url 'accounts:update' %}">정보수정</a>
         <form action="{% url 'accounts:logout' %}" method="POST" style="display:inline-block">
