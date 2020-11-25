@@ -70,21 +70,21 @@ class CustomPasswordChangeForm(PasswordChangeForm):
     old_password = forms.CharField(
     label='예전 비밀번호',
     widget=forms.PasswordInput(attrs={
-        'class': 'form-control',
+        'class': 'password-control',
         'placeholder': '예전 비밀번호를 확인해주세요',  
         })
     )
     new_password1 = forms.CharField(
     label='새로운 비밀번호',
     widget=forms.PasswordInput(attrs={
-        'class': 'form-control',
+        'class': 'password-control',
         'placeholder': '새로운 비밀번호를 확인해주세요',        
         })
     )
     new_password2 = forms.CharField(
     label='새로운 비밀번호2',
     widget=forms.PasswordInput(attrs={
-        'class': 'form-control',
+        'class': 'password-control',
         'placeholder': '새로운 비밀번호를 확인해주세요',
         })
     )

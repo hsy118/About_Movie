@@ -238,7 +238,7 @@ h1 {
 .update-accounts > p > label {
   color: white;
 }
-#id_password {
+.errorlist {
   color: white;
 }
 .helptext {

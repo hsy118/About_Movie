@@ -6,10 +6,12 @@ from django.contrib.auth.forms import (
     AuthenticationForm,
     PasswordChangeForm,
 )
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_http_methods, require_safe
 from django.contrib.auth import update_session_auth_hash
 from .forms import CustomUserChangeForm, CustomUserCreationForm, CustomAuthenticationForm
+
 
 # Create your views here.
 @require_http_methods(['GET', 'POST'])
@@ -53,6 +55,7 @@ def login(request):
 
 @require_POST
 def logout(request):
+    print('logout printing')
     auth_logout(request)
     return redirect('movies:popular')
 
@@ -75,6 +78,7 @@ def update(request):
 
 @require_POST
 def delete(request):
+    print('delete printing')
     if request.user.is_authenticated:
         request.user.delete()
     return redirect('movies:popular')
