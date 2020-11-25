@@ -4,7 +4,7 @@
     {% for movie in movies %}
       <button onclick="clickModal(id)" id="button-{{movie.id}}" class="mt-5 mx-5" type="button" data-toggle="modal"
       data-target="#movie-{{movie.id}}">
-      <div class="card" style="width: 11rem; height:23rem;">
+      <div class="card">
           <img src="{{movie.img_url}}" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title text-primary">{{movie.title}}</h5>

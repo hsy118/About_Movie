@@ -1,6 +1,6 @@
 * {
-	margin: 0;
-	padding: 0;
+	margin: 0px;
+	padding: 0px;
 }
 body {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url(../img/film.jpg);
@@ -8,14 +8,34 @@ body {
 	-webkit-background-size: cover;
 	background-size: cover;
 	background-position: center center;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url(../img/film.jpg);
+	height: 100vh;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
 	position: relative;
 }
+
 h1 {
       text-align: center;
       margin-bottom: 2rem;
     }
 
-  .button_margin {
+.my-container {
+  margin-top: 50px;
+  /* border: 2px solid red; */
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 0;
+}
+
+  /* .button_margin {
     margin-left: 0.5rem;
     margin-bottom: 0.8rem;
     font-size: 24px;
@@ -26,42 +46,17 @@ h1 {
   .button_margin:hover {
     background-color: #008CBA;
     color: white;
-  }
+  } */
 
-  #toc-content {
-    display: none;
-  }
-
-  #toc-toggle {
-    cursor: pointer;
-    color: #000000;
-    margin-left: 0.5rem;
-    border: 2px solid black;
-    border-radius: 8px;
-    font-size: 24px;
-  }
-
-  #toc-toggle:hover {
-      background-color: #008CBA;
-      color: white;
-  }
-.my-nav {
+/* .my-nav {
   position: fixed;
   padding: 11px 150px;
   width: 100%;
-  
   top: 0px;
   z-index: 1;
   background-color: #68696c;
-}
-.my-container {
-  margin-top: 150px;
-  border: 2px solid red;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  z-index: 0;
-}
+} */
+
 .my-sub-nav {
 
 }
@@ -77,6 +72,12 @@ h1 {
 }
 .accounts-tab > a {
   margin: 5px 10px;
+  margin-top: 30px;
+  font-size: 20px;
+  color: whitesmoke;
+  display: inline-block;
+  font-weight: bold;
+  
 }
 .genre-buttons {
   margin-top: 10px;
@@ -100,4 +101,72 @@ h1 {
 }
 .write {
   font-size: 30px;
+}
+
+.wrapper {
+	width: 1170px;
+	margin: auto;
+}
+/* https://i.postimg.cc/YjcJg24M/aa.jpg */
+
+.nav-area {
+	float: right;
+	list-style: none;
+  margin-top: 30px;
+  font-weight: bold;
+}
+.nav-area li {
+	display: inline-block;
+}
+.nav-area li a {
+	color: #fff;
+	text-decoration: none;
+	padding: 5px 20px;
+	font-family: poppins;
+	font-size: 20px;
+	text-transform: uppercase;
+}
+.nav-area li a:hover {
+	background: #fff;
+	color: #333;
+}
+.logo {
+	float: left;
+}
+.logo h2 {
+	width: 100%;
+    padding: 15px 0;
+    color: whitesmoke;
+}
+
+.card {
+  width: 11rem;
+  height: 23rem;
+}
+
+.card:hover {
+  transform: translate3D(0,-1px,0) scale(1.2);
+  box-shadow: 8px 28px 50px rgba(39,44,49,.07), 1px 6px 12px rgba(39,44,49,.04);
+  transition: all .4s ease; /* zoom in */
+}
+
+
+
+/* 더보기 */
+#toc-content {
+  display: none;
+}
+#toc-toggle {
+  cursor: pointer;
+  color: white;
+  margin-left: 0.5rem;
+  font-size: 20px;
+}
+#toc-toggle:hover {
+    background-color: #fff;
+    color: #333;
+    transform:scale(1.2)
+}
+.morebutton {
+  margin-top: 10px;
 }

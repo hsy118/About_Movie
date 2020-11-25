@@ -11,25 +11,25 @@
 </head>
 <body>
 <header>
-    <div class="wrapper">
-        <div class="logo"  style="width: 150px; height: 70px;">
-            {% comment %} <img src="https://i.postimg.cc/mg4rWBmv/logo.png" alt=""> {% endcomment %}
-						<h2>ABOUT MOVIE</h2>
-        </div>
-<ul class="nav-area">
-<li><a href="#">Home</a></li>
-<li><a href="#">About</a></li>
-<li><a href="#">Services</a></li>
-<li><a href="#">Portfolio</a></li>
-<li><a href="#">Contact</a></li>
-</ul>
-</div>
-<div class="welcome-text">
-	<a href="{% url 'movies:popular' %}">
-		<h1>About <span>MOVIE</span></h1>
-		<img style="width: 400px; height: 300px"src="{% static 'img/undraw_movie_night_fldd.svg' %}" alt="">
-	</a>
-</div>
+  <div class="wrapper">
+		<div class="logo"  style="width: 150px; height: 70px;">
+			{% comment %} <img src="https://i.postimg.cc/mg4rWBmv/logo.png" alt=""> {% endcomment %}
+			<h2>ABOUT MOVIE</h2>
+		</div>
+		<ul class="nav-area">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Portfolio</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+	</div>
+	<div class="welcome-text">
+		<a href="{% url 'movies:popular' %}">
+			<h1>About <span>MOVIE</span></h1>
+			<img style="width: 400px; height: 300px"src="{% static 'img/undraw_movie_night_fldd.svg' %}" alt="">
+		</a>
+	</div>
 </header>
 
 </body>
