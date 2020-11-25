@@ -9,13 +9,13 @@ from django.contrib.auth.forms import (
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_http_methods, require_safe
 from django.contrib.auth import update_session_auth_hash
-from .forms import CustomUserChangeForm, CustomUserCreationForm
+from .forms import CustomUserChangeForm, CustomUserCreationForm, CustomAuthenticationForm
 
 # Create your views here.
 @require_http_methods(['GET', 'POST'])
 def signup(request):
     if request.user.is_authenticated:
-        return redirect('movies:main')
+        return redirect('movies:popular')
 
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -37,14 +37,14 @@ def login(request):
         return redirect('movies:popular')
         
     if request.method == 'POST':
-        form = AuthenticationForm(request, request.POST)
+        form = CustomAuthenticationForm(request, request.POST)
         if form.is_valid():
             # 로그인
             auth_login(request, form.get_user())
             print(request.GET.get('next'))
             return redirect(request.GET.get('next') or 'movies:popular')
     else:
-        form = AuthenticationForm()
+        form = CustomAuthenticationForm()
     context = {
         'form': form,
     }
