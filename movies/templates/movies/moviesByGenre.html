@@ -2,13 +2,13 @@
 {% block content %}
   <div class="text-center  d-flex flex-wrap justify-content-around">
     {% for movie in movies %}
-      <button onclick="clickModal(id)" id="button-{{movie.id}}" class="mt-4" type="button" data-toggle="modal"
+      <button onclick="clickModal(id)" id="button-{{movie.id}}" class="card-button" type="button" data-toggle="modal"
       data-target="#movie-{{movie.id}}">
       <div class="card" style="width: 11rem; height:23rem;">
           <img src="{{movie.img_url}}" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title text-primary">{{movie.title}}</h5>
-            <p class="card-text text-primary">{{movie.rate}}</p>
+            <h5 class="card-title text-white">{{movie.title}}</h5>
+            <p class="card-text">평점:{{movie.rate}}</p>
           </div>
       </div>
       </button>
@@ -18,12 +18,15 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 id="title-{{movie.id}}"class="modal-title">{{movie.title}}</h5>
+              <br>
               <div class="video-container">
+              <div align="center">
                 <iframe src="" id="frame-{{movie.id}}" class="video" frameborder="0"></iframe>
+              </div>
               </div>
             </div>
             <div class="modal-body">
-              {{movie.story}}
+              <h6>줄거리요약:{{movie.story}}</h6>
             </div>
             <div class="modal-footer">
               <button onclick="clickClose(id)" id="close-{{movie.id}}" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -36,7 +39,7 @@
 
   <script>
     const YOUTUBE_API_URL = "https://www.googleapis.com/youtube/v3/search"
-    const YOUTUBE_API_KEY = "AIzaSyBBt_xBVb114robyfWjaXiuB9fWN2D1GqM"
+    const YOUTUBE_API_KEY = "AIzaSyBdBixVjpsLKiJOA-jGlAOqx6GFnI72rrI"
 
     const nowPlyaing = false
     const movieTitle = document.getElementsByClassName('modal-title')
