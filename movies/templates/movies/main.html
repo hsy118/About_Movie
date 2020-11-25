@@ -20,13 +20,17 @@
               <h3 id="title-{{movie.id}}"class="modal-title"><{{movie.title}}></h3>
               <br>
                 <div class="video-container">
-                  <iframe src="" id="frame-{{movie.id}}" width="100%" height="100%" class="video" frameborder="0"></iframe>
+                  <iframe src="" id="frame-{{movie.id}}" class="video" frameborder="0"></iframe>
                 </div>
             </div>
             <div class="modal-body">
               <h4><줄거리요약>
               <br>
-              {{movie.story}}</h4>
+              {{movie.story}}
+              </h4>
+              <a href="{% url 'community:index' %}">
+              <button>리뷰보기</button>
+              </a>
             </div>
             <div class="modal-footer">
               <button onclick="clickClose(id)" id="close-{{movie.id}}" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
