@@ -20,7 +20,6 @@ header {
 }
 .nav-area {
 	float: right;
-	list-style: none;
 	margin-top: 30px;
 }
 .nav-area li {
@@ -74,9 +73,7 @@ header {
         margin: auto;
         color: whitesmoke;
     }
-	img {
-		width: ;
-	}
+
 	.nav-area {
 		float: none;
 		margin-top: 0;
