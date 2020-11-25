@@ -5,7 +5,7 @@
 <div id="app">
   <div :class="{'finish': isFinish}">
     <div class="d-flex justify-content-around">
-      <div class="left d-flex flex-column">
+      <div class="recommend-value">
         <label><input type="checkbox" v-model="checked" value="액션" :disabled="checked.length > 1 ">  액션</label>
         <label><input type="checkbox" v-model="checked" value="모험" :disabled="checked.length > 1 ">  모험</label>
         <label><input type="checkbox" v-model="checked" value="애니메이션" :disabled="checked.length > 1 ">  애니메이션</label>
@@ -17,7 +17,7 @@
         <label><input type="checkbox" v-model="checked" value="판타지" :disabled="checked.length > 1 ">  판타지</label>
       </div>
       
-      <div class="right d-flex flex-column">
+      <div class="recommend-value">
         <label><input type="checkbox" v-model="checked" value="역사" :disabled="checked.length > 1 ">  역사</label>
         <label><input type="checkbox" value="공포" v-model="checked" :disabled="checked.length > 1 ">  공포</label>
         <label><input type="checkbox" value="음악" v-model="checked" :disabled="checked.length > 1 ">  음악</label>
@@ -30,7 +30,7 @@
       </div>
     </div>
     <button
-    class="btn btn-primary recom-button"
+    class="btn btn-dark recom-button"
     @click="getRecommendation"
     >장르별 추천 받기!</button>
   </div>
@@ -50,25 +50,31 @@
         </button>
         
         <div class="modal fade" :id="`bestmovie-${movie.movieId}`" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modal-default" aria-hidden="true">
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" :id="`besttitle-${movie.movieId}`">({movie.movieTitle})</h5>
+                <h3 class="modal-title" :id="`besttitle-${movie.movieId}`">({movie.movieTitle})</h3>
                 <div class="video-container">
                 <iframe src="" :id="`bestframe-${movie.movieId}`" class="video" frameborder="0"></iframe>
               </div>
-              </div>
-              <div class="modal-body">
-                <h6>줄거리요약:{{movie.story}}</h6>
-              </div>
-              <div class="modal-footer">
-                <button onclick="bestClickClose(id)" :id="`bestclose-${movie.movieId}`" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
+            </div>
+            <div class="modal-body">
+              <h4><줄거리요약>
+              <br>
+              ({movie.movieStory})
+              </h4>
+              <a href="{% url 'community:index' %}">
+                <button>리뷰보기</button>
+              </a>
+            </div>
+            <div class="modal-footer">
+              <button onclick="bestClickClose(id)" :id="`bestclose-${movie.movieId}`" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   
     <hr>
     <h1 style="display:block;">좋아하실 수 있습니다</h1>
@@ -84,16 +90,22 @@
           </div>
         </button>
         <div class="modal fade" :id="`movie-${movie.movieId}`" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" :id="`title-${movie.movieId}`">({movie.movieTitle})</h5>
+                <h3 class="modal-title" :id="`title-${movie.movieId}`">({movie.movieTitle})</h3>
                 <div class="video-container">
                   <iframe src="" :id="`frame-${movie.movieId}`" class="video" frameborder="0"></iframe>
                 </div>
               </div>
               <div class="modal-body">
-                <h6>줄거리요약:{{movie.story}}</h6>
+                <h4><줄거리요약>
+                <br>
+                ({movie.movieStory})
+                </h4>
+                <a href="{% url 'community:index' %}">
+                  <button>리뷰보기</button>
+                </a>
               </div>
               <div class="modal-footer">
                 <button onclick="clickClose(id)" :id="`close-${movie.movieId}`" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -114,13 +126,13 @@
           <div class="card" style="width: 11rem; height: 23rem;">
             <img :src="movie.movieImgUrl" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title text-white">({movie.movieTitle})</h5>
+              <h3 class="card-title text-white">({movie.movieTitle})</h3>
               <p class="card-text">평점:({movie.movieRate})</p>
             </div>
           </div>
         </button>
         <div class="modal fade" :id="`secondmovie-${movie.movieId}`" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" :id="`secondtitle-${movie.movieId}`">({movie.movieTitle})</h5>
@@ -129,7 +141,13 @@
                 </div>
               </div>
               <div class="modal-body">
-                <h6>줄거리요약:{{movie.story}}</h6>
+                <h4><줄거리요약>
+                <br>
+                ({movie.movieStory})
+                </h4>
+                <a href="{% url 'community:index' %}">
+                  <button>리뷰보기</button>
+                </a>
               </div>
               <div class="modal-footer">
                 <button onclick="secondClickClose(id)" :id="`secondclose-${movie.movieId}`" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

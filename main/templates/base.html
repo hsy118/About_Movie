@@ -36,12 +36,13 @@
 			<li><a href="http://127.0.0.1:8000/movies/show/스릴러">스릴러</a></li>
 			<li><a href="http://127.0.0.1:8000/movies/show/코미디">코미디</a></li>
 			<li><a href="http://127.0.0.1:8000/movies/show/액션">액션</a></li>
-      <li><a href="http://127.0.0.1:8000/movies/show/모험">모험</a></li>
+      <li><a href="http://127.0.0.1:8000/movies/show/범죄">범죄</a></li>
       <li id="toc-toggle" onclick="openCloseToc()">더보기</li>
         <div id="toc-content">
           <div class="morebutton">
-            <li><a href="http://127.0.0.1:8000/movies/show/범죄">범죄</a></li>
+            
             <li><a href="http://127.0.0.1:8000/movies/show/다큐멘터리">다큐멘터리</a></li>
+            <li><a href="http://127.0.0.1:8000/movies/show/모험">모험</a></li>
             <li><a href="http://127.0.0.1:8000/movies/show/역사">역사</a></li>
             <li><a href="http://127.0.0.1:8000/movies/show/공포">공포</a></li>
             <li><a href="http://127.0.0.1:8000/movies/show/로맨스">로맨스</a></li>
@@ -64,11 +65,11 @@
         <a href="{% url 'accounts:update' %}">정보수정</a>
         <form action="{% url 'accounts:logout' %}" method="POST" style="display:inline-block">
           {% csrf_token %}
-          <input style="font-size:22px; border: none; background: transparent; color: white;" type="button" value="로그아웃">
+          <input style="font-size:22px; border: none; background: transparent; color:whitesmoke;" type="submit" value="로그아웃">
         </form>
         <form action="{% url 'accounts:delete' %}" method="POST" style="display:inline-block">
           {% csrf_token %}
-          <input style="font-size:22px; border: none; background: transparent; margin-left: 10px; color: white;" type="button" value="회원탈퇴">
+          <input style="font-size:22px; border: none; background: transparent; margin-left: 10px; color: whitesmoke;" type="submit" value="회원탈퇴">
         </form>
         {% else %}
           <div class= 'accounts-tab'>
