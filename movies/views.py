@@ -15,8 +15,9 @@ from .serializers import PopularSerializer
 def start(request):
     return render(request, 'movies/start.html')
 
-
+@login_required
 def popular_movies(request):
+
     """
     이미지, 제목, 레이팅을 인기있는 순서대로 보내주는 API
     """
@@ -28,10 +29,11 @@ def popular_movies(request):
     # return Response(serializer.data)
     return render(request, 'movies/main.html', context)
 
-
+@login_required
 def recommend(request):
     """ 추천영화로 랜더링하는 함수"""
     return render(request, 'movies/recommend.html')
+
 
 def recommendation(request, genre1, genre2):
     """
@@ -79,7 +81,7 @@ def recommendation(request, genre1, genre2):
     context['secondMovie'] = second_movie
     return JsonResponse(context, status = 200)
 
-
+@login_required
 def show_movies(request, genre):
     """ context와 함께 genre별로 페이지 렌더링해주는 함수"""
     movies = Movies.objects.all() 
@@ -101,21 +103,3 @@ def get_api(request, pk):
     movies = Movies.objects.get(pk=pk)
     serializer = PopularSerializer(movies)
     return Response(serializer.data)
-
-
-def abab(request):
-    """
-    이미지, 제목, 레이팅을 인기있는 순서대로 보내주는 API
-    """
-    # movies = Movies.objects.order_by('-people')
-    # serializer = PopularSerializer(movies, many=True)
-    print('testtestetsetsetst')
-    context = {
-        'movies' : movies,
-    }
-    # return Response(serializer.data)
-    return render(request, 'movies/abab.html', context)
-
-def wow(request):
-    print('wow')
-    return render(request, 'movies/wow.html')

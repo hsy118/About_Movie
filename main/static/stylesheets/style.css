@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cute+Font&family=Nanum+Pen+Script&display=swap');
+
 * {
 	margin: 0;
   padding: 0;
@@ -29,7 +29,7 @@ h1 {
     }
 
 .my-container {
-  margin-top: 50px;
+  margin-top: 140px;
   /* border: 2px solid red; */
   width: 80%;
   margin-left: auto;
@@ -122,7 +122,7 @@ h1 {
 	color: #fff;
 	text-decoration: none;
 	padding: 5px 20px;
-	font-family: poppins;
+
 	font-size: 20px;
 	text-transform: uppercase;
 }
@@ -133,7 +133,7 @@ h1 {
 .logo {
 	float: left;
 }
-.logo h2 {
+.logo h1 {
 	width: 100%;
     padding: 15px 0;
     color: whitesmoke;
