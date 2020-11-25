@@ -39,12 +39,12 @@
     <h1 style="display:block;">선택하신 항목과 가장 일치합니다</h1>
     <div class="text-center d-flex flex-wrap justify-content-around">
       <div v-for="(movie, idx) in bestMovie">
-        <button onclick="bestClickModal(id)" :id="`bestbutton-${movie.movieId}`" type="button" data-toggle="modal" :data-target="`#bestmovie-${movie.movieId}`">
-          <div class="card mt-4" style="width: 11rem; height: 23rem;">
+        <button onclick="bestClickModal(id)" :id="`bestbutton-${movie.movieId}`" class="card-button" type="button" data-toggle="modal" :data-target="`#bestmovie-${movie.movieId}`">
+          <div class="card" style="width: 11rem; height: 23rem;">
             <img :src="movie.movieImgUrl" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">({movie.movieTitle})</h5>
-              <p class="card-text">({movie.movieRate})</p>
+              <h5 class="card-title text-white">({movie.movieTitle})</h5>
+              <p class="card-text">평점:({movie.movieRate})</p>
             </div>
           </div>
         </button>
@@ -59,7 +59,7 @@
               </div>
               </div>
               <div class="modal-body">
-                <p>({movie.movieStory})</p>
+                <h6>줄거리요약:{{movie.story}}</h6>
               </div>
               <div class="modal-footer">
                 <button onclick="bestClickClose(id)" :id="`bestclose-${movie.movieId}`" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -71,16 +71,15 @@
     </div>
   
     <hr>
-  
     <h1 style="display:block;">좋아하실 수 있습니다</h1>
     <div class="text-center d-flex flex-wrap justify-content-around">
       <div v-for="(movie, idx) in firstMovie">
-        <button onclick="clickModal(id)" :id="`button-${movie.movieId}`" type="button" data-toggle="modal" :data-target="`#movie-${movie.movieId}`">
-          <div class="card mt-4" style="width: 11rem; height: 23rem;">
+        <button onclick="clickModal(id)" :id="`button-${movie.movieId}`" class="card-button" type="button" data-toggle="modal" :data-target="`#movie-${movie.movieId}`">
+          <div class="card" style="width: 11rem; height: 23rem;">
             <img :src="movie.movieImgUrl" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">({movie.movieTitle})</h5>
-              <p class="card-text">({movie.movieRate})</p>
+              <h5 class="card-title text-white">({movie.movieTitle})</h5>
+              <p class="card-text">평점:({movie.movieRate})</p>
             </div>
           </div>
         </button>
@@ -94,7 +93,7 @@
                 </div>
               </div>
               <div class="modal-body">
-                <p>({movie.movieStory})</p>
+                <h6>줄거리요약:{{movie.story}}</h6>
               </div>
               <div class="modal-footer">
                 <button onclick="clickClose(id)" :id="`close-${movie.movieId}`" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -111,12 +110,12 @@
     <h1 style="display:block;">좋아하실 수 있습니다</h1>
     <div class="text-center d-flex flex-wrap justify-content-around">
       <div v-for="(movie, idx) in secondMovie">
-        <button onclick="secondClickModal(id)" :id="`secondbutton-${movie.movieId}`" type="button" data-toggle="modal" :data-target="`#secondmovie-${movie.movieId}`">
-          <div class="card mt-4" style="width: 11rem; height: 23rem;">
+        <button onclick="secondClickModal(id)" :id="`secondbutton-${movie.movieId}`" class="card-button" type="button" data-toggle="modal" :data-target="`#secondmovie-${movie.movieId}`">
+          <div class="card" style="width: 11rem; height: 23rem;">
             <img :src="movie.movieImgUrl" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">({movie.movieTitle})</h5>
-              <p class="card-text">({movie.movieRate})</p>
+              <h5 class="card-title text-white">({movie.movieTitle})</h5>
+              <p class="card-text">평점:({movie.movieRate})</p>
             </div>
           </div>
         </button>
@@ -130,7 +129,7 @@
                 </div>
               </div>
               <div class="modal-body">
-                <p>({movie.movieStory})</p>
+                <h6>줄거리요약:{{movie.story}}</h6>
               </div>
               <div class="modal-footer">
                 <button onclick="secondClickClose(id)" :id="`secondclose-${movie.movieId}`" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -144,7 +143,7 @@
   {% comment %} 좋아하실수 있습니다 {% endcomment %}
   <script>
     const YOUTUBE_API_URL = "https://www.googleapis.com/youtube/v3/search"
-    const YOUTUBE_API_KEY = "AIzaSyBBt_xBVb114robyfWjaXiuB9fWN2D1GqM"
+    const YOUTUBE_API_KEY = "AIzaSyBdBixVjpsLKiJOA-jGlAOqx6GFnI72rrI"
 
     const nowPlyaing = false
     {% comment %} const movieTitle = document.getElementsByClassName('modal-title') {% endcomment %}
