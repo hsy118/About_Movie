@@ -11,8 +11,6 @@ class CustomUserChangeForm(UserChangeForm):
         'placeholder': '아이디를 입력해주세요',
         })
     )
-
-
     class Meta:
         model = get_user_model()
         fields = ('username',)

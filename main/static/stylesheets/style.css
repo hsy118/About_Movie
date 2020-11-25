@@ -312,6 +312,24 @@ h1 {
   margin-left: auto;
   margin-right: auto;
 }
+#id_password {
+  display: block;
+  font-size: 31px;
+  margin-top: 7rem;
+}
+
+.update-accounts > p > label {
+  display: none;
+}
+.helptext {
+  display: block;
+  font-size: 32.5px;
+}
+.helptext > a {
+  text-decoration: none;
+  color: moccasin;
+}
+
 /* 커뮤니티 스타일링 */
 
 .board-header > p{
