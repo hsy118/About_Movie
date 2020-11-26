@@ -97,3 +97,7 @@ def get_api(request, pk):
     movies     = Movies.objects.get(pk=pk)
     serializer = PopularSerializer(movies)
     return Response(serializer.data)
+
+
+def about(request):
+    return render(request, 'movies/about.html')
