@@ -1,33 +1,27 @@
-from django.shortcuts import render
-from django.http import JsonResponse
+from django.shortcuts               import render
+from django.http                    import JsonResponse
 from django.contrib.auth.decorators import login_required
 
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework import status
-from .models import Movies
-from .serializers import PopularSerializer
-# Create your views here.
-
-# def movie_list(request):
-#     return render(request, 'movies/temp.html')
+from rest_framework.decorators             import api_view
+from rest_framework.response               import Response
+from rest_framework                        import status
+from .models                               import Movies
+from .serializers                          import PopularSerializer
 
 def start(request):
     return render(request, 'movies/start.html')
 
 @login_required
 def popular_movies(request):
-
     """
     이미지, 제목, 레이팅을 인기있는 순서대로 보내주는 API
     """
-    movies = Movies.objects.order_by('-people')
-    # serializer = PopularSerializer(movies, many=True)
+    movies  = Movies.objects.order_by('-people')
     context = {
         'movies' : movies,
     }
-    # return Response(serializer.data)
     return render(request, 'movies/main.html', context)
+
 
 @login_required
 def recommend(request):
@@ -49,21 +43,21 @@ def recommendation(request, genre1, genre2):
         for movie_genre in movie_genres:
             if movie_genre == genre1:
                 temp = {}
-                temp['movieId'] = movie.id
-                temp['movieTitle'] = movie.title
+                temp['movieId']     = movie.id
+                temp['movieTitle']  = movie.title
                 temp['movieImgUrl'] = movie.img_url
-                temp['movieRate'] = movie.rate
+                temp['movieRate']   = movie.rate
                 temp['movieGenres'] = movie.genre
-                temp['movieStory'] = movie.story
+                temp['movieStory']  = movie.story
                 first_movie.append(temp)
             if movie_genre == genre2:
                 temp = {}
-                temp['movieId'] = movie.id
-                temp['movieTitle'] = movie.title
+                temp['movieId']     = movie.id
+                temp['movieTitle']  = movie.title
                 temp['movieImgUrl'] = movie.img_url
-                temp['movieRate'] = movie.rate
+                temp['movieRate']   = movie.rate
                 temp['movieGenres'] = movie.genre
-                temp['movieStory'] = movie.story
+                temp['movieStory']  = movie.story
                 second_movie.append(temp)
     if len(first_movie) > len(second_movie):
         long_length = len(first_movie)
@@ -76,17 +70,17 @@ def recommendation(request, genre1, genre2):
             for j in first_movie:
                 if i == j:
                     best_movie.append(i)
-    context['bestMovie'] = best_movie
-    context['firstMovie'] = first_movie
+    context['bestMovie']   = best_movie
+    context['firstMovie']  = first_movie
     context['secondMovie'] = second_movie
     return JsonResponse(context, status = 200)
 
 @login_required
 def show_movies(request, genre):
     """ context와 함께 genre별로 페이지 렌더링해주는 함수"""
-    movies = Movies.objects.all() 
+    movies      = Movies.objects.all() 
     genre_movies=[]
-    cnt = 0
+    cnt         = 0
     for movie in movies:
         movie_genre = movie.genre.split(' ')
         for com in movie_genre:
@@ -100,6 +94,6 @@ def show_movies(request, genre):
 
 @api_view(['GET'])
 def get_api(request, pk):
-    movies = Movies.objects.get(pk=pk)
+    movies     = Movies.objects.get(pk=pk)
     serializer = PopularSerializer(movies)
     return Response(serializer.data)

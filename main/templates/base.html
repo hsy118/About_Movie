@@ -10,9 +10,11 @@
   <script src="https://kit.fontawesome.com/dacf7dcd9c.js" crossorigin="anonymous">
   </script>
 	<title>About Movie</title>
+  {% comment %} 구글 폰트 연결 {% endcomment %}
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Do+Hyeon&family=Single+Day&display=swap" rel="stylesheet">
+  {% comment %} css 파일 연결 {% endcomment %}
   <link rel="stylesheet" href="{% static 'stylesheets/style.css' %}">
   {% block css %}{% endblock %}
   <style>
@@ -40,7 +42,6 @@
       <li id="toc-toggle" onclick="openCloseToc()">더보기</li>
         <div id="toc-content">
           <div class="morebutton">
-            
             <li><a href="http://127.0.0.1:8000/movies/show/다큐멘터리">다큐멘터리</a></li>
             <li><a href="http://127.0.0.1:8000/movies/show/모험">모험</a></li>
             <li><a href="http://127.0.0.1:8000/movies/show/역사">역사</a></li>

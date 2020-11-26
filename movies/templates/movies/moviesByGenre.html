@@ -70,8 +70,8 @@
       .catch(err => {console.log(err)})
     }
     function clickClose(id) {
+      // 취소 버튼 누르고 모달창 나가면 유튜브 재생 멈추는 기능
       this.nowPlyaing = false
-      console.log(id)
       const newNowPlaying = id.split('-')
       const newIdNum = newNowPlaying[1]
       const NewMyFrame = `frame-${newIdNum}`

@@ -1,18 +1,16 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.shortcuts import render, redirect, get_object_or_404
-from django.views.decorators.http import require_GET, require_POST, require_http_methods
-from django.http import JsonResponse
+from django.shortcuts               import render, redirect, get_object_or_404
+from django.views.decorators.http   import require_GET, require_POST, require_http_methods
+from django.http                    import JsonResponse
 from django.contrib.auth.decorators import login_required
 
-from .models import Review, Comment
-from movies.models import Movies
-from .forms import ReviewForm, CommentForm
+from .models            import Review, Comment
+from movies.models      import Movies
+from .forms             import ReviewForm, CommentForm
 
 
 @require_GET
 def index(request):
+    """ 게시글 리스트 rendering하는 함수"""
     reviews = Review.objects.order_by('-pk')
     context = {
         'reviews': reviews,
@@ -22,10 +20,11 @@ def index(request):
 
 @require_http_methods(['GET', 'POST'])
 def create(request):
+    """새 게시글 생성"""
     if request.method == 'POST':
         form = ReviewForm(request.POST) 
         if form.is_valid():
-            review = form.save(commit=False)
+            review      = form.save(commit=False)
             review.user = request.user
             review.save()
             return redirect('community:detail', review.pk)
@@ -39,13 +38,14 @@ def create(request):
 
 @require_GET
 def detail(request, review_pk):
+    """ 글 상세 페이지 """
     review = get_object_or_404(Review, pk=review_pk)
     comments = review.comment_set.all()
     comment_form = CommentForm()
     context = {
-        'review': review,
+        'review'      : review,
         'comment_form': comment_form,
-        'comments': comments,
+        'comments'    : comments,
     }
     return render(request, 'community/detail.html', context)
 
@@ -53,6 +53,7 @@ def detail(request, review_pk):
 @login_required
 @require_http_methods(['GET', 'POST'])
 def update(request, review_pk):
+    """글 수정 """
     review = get_object_or_404(Review, pk=review_pk)
     if request.user == review.user:
         if request.method == 'POST':
@@ -65,7 +66,7 @@ def update(request, review_pk):
     else:
         return redirect('community:index')
     context = {
-        'form' : form,
+        'form'   : form,
         'review' : review,
     }
     return render(request, 'community/update.html', context)
@@ -73,28 +74,29 @@ def update(request, review_pk):
 
 @require_POST
 def create_comment(request, review_pk):
+    """댓글 생성"""
     review = get_object_or_404(Review, pk=review_pk)
     comment_form = CommentForm(request.POST)
     if comment_form.is_valid():
-        comment = comment_form.save(commit=False)
-        comment.review = review
-        comment.user = request.user
+        comment         = comment_form.save(commit=False)
+        comment.review  = review
+        comment.user    = request.user
         comment.save()
         return redirect('community:detail', review.pk)
     context = {
-        'comment_form': comment_form,
-        'review': review,
-        'comments': review.comment_set.all(),
+        'comment_form'  : comment_form,
+        'review'        : review,
+        'comments'      : review.comment_set.all(),
     }
     return render(request, 'community/detail.html', context)
 
 
 @require_POST
 def like(request, review_pk):
+    """좋아요 버튼 누르면 실행 """
     if request.user.is_authenticated:
         review = get_object_or_404(Review, pk=review_pk)
         user = request.user
-
         if review.like_users.filter(pk=user.pk).exists():
             review.like_users.remove(user)
             like_status = False
