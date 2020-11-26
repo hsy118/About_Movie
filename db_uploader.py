@@ -31,6 +31,7 @@ def page1():
       title = movie_dict['results'][i]['title']
       img_url = f"https://image.tmdb.org/t/p/w500{movie_dict['results'][i]['poster_path']}"
       story = movie_dict['results'][i]['overview']
+      story = story.replace("'", "‘")
       people = movie_dict['results'][i]['popularity']
       rate = movie_dict['results'][i]['vote_average']
       genre = movie_dict['results'][i]['genre_ids']
